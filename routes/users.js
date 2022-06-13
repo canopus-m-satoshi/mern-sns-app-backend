@@ -55,20 +55,20 @@ router.get('/:id', async (req, res) => {
 router.put('/:id/follow', async (req, res) => {
   if (req.body.userId !== req.params.id) {
     try {
-      const user = await User.findById(req.params.id)
-      const currentUser = await User.findById(req.body.userId)
+      const user = await User.findById(req.params.id) // フォローしたいユーザーID
+      const currentUser = await User.findById(req.body.userId) // 操作をしているユーザーID
 
       // フォロワーに自分がいなかったらフォローできる
-      if (!user.followers.include(req.body.userId)) {
+      if (!user.followers.includes(req.body.userId)) {
         await user.updateOne({
           $push: {
             followers: req.body.userId,
           },
         })
 
-        await user.updateOne({
+        await currentUser.updateOne({
           $push: {
-            followings: req.body.userId,
+            followings: req.params.id,
           },
         })
 
