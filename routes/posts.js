@@ -95,7 +95,7 @@ router.get('/timeline/all', async (req, res) => {
 
     // 自分がフォローしている友達の投稿内容を全て取得する
     const friendPosts = await Promise.all(
-      currentUser.followings.map((frinendId) => {
+      currentUser.followings.map((friendId) => {
         return Post.find({ userId: friendId })
       }),
     )
