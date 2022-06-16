@@ -1,5 +1,5 @@
 {
-  "name": "mern-sns-app",
+  "name": "mern-sns-app-backend",
   "version": "1.0.0",
   "description": "sns app",
   "main": "server.js",

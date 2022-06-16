@@ -1,1 +1,1 @@
-# mern-sns-app
+# mern-sns-app-backend
